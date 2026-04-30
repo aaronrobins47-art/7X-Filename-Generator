@@ -68,6 +68,21 @@
         .copy-button.copied {
             background: #10b981;
         }
+
+        .brand-logo {
+            width: 150px;
+            max-width: 60vw;
+            height: auto;
+            margin: 0 auto 1rem auto;
+            display: block;
+            filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.5));
+        }
+
+        @media (min-width: 768px) {
+            .brand-logo {
+                width: 180px;
+            }
+        }
     </style>
 </head>
 
@@ -77,9 +92,12 @@
         <!-- Header -->
         <div class="mb-8 md:mb-12 text-center">
             <div class="inline-block">
-                <div class="text-7xl md:text-8xl font-black tracking-tight text-white mb-3" style="filter: drop-shadow(0 10px 30px rgba(0,0,0,0.5))">
-                    7X
-                </div>
+                <img 
+                    src="7x-logo.png" 
+                    alt="7X Logo" 
+                    class="brand-logo"
+                >
+
                 <div class="text-base md:text-lg font-bold tracking-widest text-purple-200 uppercase">
                     Filename Generator
                 </div>
