@@ -15,7 +15,7 @@
                     rgba(31, 21, 68, 0.78) 45%,
                     rgba(61, 42, 156, 0.68) 100%
                 ),
-                url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==");
+                url("timeline-background.png");
 
             background-size: cover;
             background-position: center;
@@ -32,6 +32,22 @@
         input {
             background: rgba(26, 15, 61, 0.92);
             border-color: rgba(168, 85, 247, 0.3);
+        }
+
+        select {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+
+            background-image: url("data:image/svg+xml,%3Csvg width='14' height='14' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 7.5L10 12.5L15 7.5' stroke='%23d8b4fe' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1.35rem center;
+            background-size: 14px;
+            padding-right: 3rem;
+        }
+
+        select::-ms-expand {
+            display: none;
         }
 
         select:focus,
@@ -79,7 +95,7 @@
 
         .header-block {
             position: relative;
-            top: -18px;
+            top: -8px;
             margin-bottom: 0;
         }
 
@@ -92,20 +108,14 @@
             filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.5));
         }
 
-        .filename-title {
-            position: relative;
-            top: 18px;
-            margin-bottom: 0;
-        }
-
         .main-card-wrapper {
             position: relative;
-            top: 38px;
+            top: 20px;
         }
 
         .footer-text {
             position: relative;
-            top: 40px;
+            top: 22px;
         }
 
         @media (min-width: 768px) {
@@ -113,16 +123,12 @@
                 width: 125px;
             }
 
-            .filename-title {
-                top: 24px;
-            }
-
             .main-card-wrapper {
-                top: 48px;
+                top: 28px;
             }
 
             .footer-text {
-                top: 50px;
+                top: 30px;
             }
         }
     </style>
@@ -133,15 +139,11 @@
         
         <!-- Header -->
         <div class="header-block text-center">
-            <div class="inline-block">
-                <div class="text-7xl md:text-8xl font-black tracking-tight text-white mb-3" style="filter: drop-shadow(0 10px 30px rgba(0,0,0,0.5))">
-                    7X
-                </div>
-
-                <div class="filename-title text-sm md:text-base font-bold tracking-widest text-purple-200 uppercase leading-none">
-                    Filename Generator
-                </div>
-            </div>
+            <img 
+                src="7x-logo.png" 
+                alt="7X Logo" 
+                class="brand-logo"
+            >
         </div>
 
         <!-- Main Card -->
@@ -382,3 +384,83 @@
             if (!showVal || !episodeVal || !guestVal || !assetTypeVal || !platformVal || !ratioVal) {
                 filenameSection.classList.add('hidden');
                 emptyState.classList.remove('hidden');
+                
+                const missing = [];
+
+                if (!showVal) missing.push('Show');
+                if (!episodeVal) missing.push('Episode');
+                if (!guestVal) missing.push('Guest');
+                if (!assetTypeVal) missing.push('Asset Type');
+                if (!platformVal) missing.push('Platform');
+                if (!ratioVal) missing.push('Ratio');
+                
+                missingFields.textContent = `Missing: ${missing.join(', ')}`;
+                return;
+            }
+
+            const cleanGuest = cleanText(guestVal);
+            const cleanTitle = titleVal ? cleanText(titleVal) : '';
+            const cleanAssetType = assetTypeVal.replace(/\s+/g, '');
+            const cleanPlatform = platformVal.replace(/\s+/g, '');
+            const date = getToday();
+
+            const filenameParts = [
+                showVal,
+                episodeVal,
+                cleanGuest,
+                cleanAssetType,
+                cleanPlatform,
+                ratioVal
+            ];
+
+            if (cleanTitle) {
+                filenameParts.push(cleanTitle);
+            }
+
+            filenameParts.push(versionVal, date);
+            
+            const filename = filenameParts.join('_');
+
+            filenameDisplay.textContent = filename;
+            filenameSection.classList.remove('hidden');
+            emptyState.classList.add('hidden');
+
+            if (hasForbiddenWords()) {
+                warning.classList.remove('hidden');
+            } else {
+                warning.classList.add('hidden');
+            }
+        }
+
+        copyButton.addEventListener('click', function() {
+            const filename = filenameDisplay.textContent;
+
+            navigator.clipboard.writeText(filename).then(function() {
+                copyButton.textContent = '✓ COPIED!';
+                copyButton.classList.add('copied');
+                
+                setTimeout(function() {
+                    copyButton.textContent = 'COPY FILENAME';
+                    copyButton.classList.remove('copied');
+                }, 2000);
+            });
+        });
+
+        [
+            show,
+            episode,
+            guest,
+            assetType,
+            platform,
+            ratio,
+            title,
+            version
+        ].forEach(function(element) {
+            element.addEventListener('input', generateFilename);
+            element.addEventListener('change', generateFilename);
+        });
+
+        generateFilename();
+    </script>
+</body>
+</html>
