@@ -69,28 +69,28 @@
             background: #10b981;
         }
 
-       .brand-logo {
-    width: 120px;
-    max-width: 50vw;
-    height: auto;
-    margin: 0 auto 0.35rem auto;
-    display: block;
-    filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.5));
-}
+        .brand-logo {
+            width: 120px;
+            max-width: 50vw;
+            height: auto;
+            margin: 0 auto 0.35rem auto;
+            display: block;
+            filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.5));
+        }
 
-@media (min-width: 768px) {
-    .brand-logo {
-        width: 140px;
-    }
-}
+        @media (min-width: 768px) {
+            .brand-logo {
+                width: 140px;
+            }
+        }
     </style>
 </head>
 
-<body class="text-white p-4 md:p-8">
+<body class="text-white px-4 py-3 md:px-8 md:py-4">
     <div class="max-w-5xl mx-auto">
         
         <!-- Header -->
-        <div class="mb-8 md:mb-12 text-center">
+        <div class="mb-5 md:mb-6 text-center">
             <div class="inline-block">
                 <img 
                     src="7x-logo.png" 
@@ -98,20 +98,20 @@
                     class="brand-logo"
                 >
 
-                <div class="text-base md:text-lg font-bold tracking-widest text-purple-200 uppercase">
+                <div class="text-sm md:text-base font-bold tracking-widest text-purple-200 uppercase leading-none">
                     Filename Generator
                 </div>
             </div>
         </div>
 
         <!-- Main Card -->
-        <div class="card-bg backdrop-blur-sm border rounded-2xl p-4 md:p-8 shadow-2xl">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+        <div class="card-bg backdrop-blur-sm border rounded-2xl p-4 md:p-7 shadow-2xl">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
                 
                 <!-- Show -->
                 <div>
                     <label class="block text-xs font-bold text-purple-200 mb-2 uppercase tracking-wider">Show</label>
-                    <select id="show" class="w-full border rounded-xl px-4 py-3.5 text-white transition-all">
+                    <select id="show" class="w-full border rounded-xl px-4 py-3 text-white transition-all">
                         <option value="">Select show...</option>
                         <option value="MA">MA - Man Alive</option>
                         <option value="CP">CP - Creator Playbooks</option>
@@ -128,19 +128,19 @@
                 <!-- Episode -->
                 <div>
                     <label class="block text-xs font-bold text-purple-200 mb-2 uppercase tracking-wider">Episode</label>
-                    <input type="text" id="episode" placeholder="E034" class="w-full border rounded-xl px-4 py-3.5 text-white placeholder-purple-300/40 transition-all font-mono">
+                    <input type="text" id="episode" placeholder="E034" class="w-full border rounded-xl px-4 py-3 text-white placeholder-purple-300/40 transition-all font-mono">
                 </div>
 
                 <!-- Guest -->
                 <div>
                     <label class="block text-xs font-bold text-purple-200 mb-2 uppercase tracking-wider">Guest / Topic</label>
-                    <input type="text" id="guest" placeholder="Callum McDonnell" class="w-full border rounded-xl px-4 py-3.5 text-white placeholder-purple-300/40 transition-all">
+                    <input type="text" id="guest" placeholder="Callum McDonnell" class="w-full border rounded-xl px-4 py-3 text-white placeholder-purple-300/40 transition-all">
                 </div>
 
                 <!-- Asset Type -->
                 <div>
                     <label class="block text-xs font-bold text-purple-200 mb-2 uppercase tracking-wider">Asset Type</label>
-                    <select id="assetType" class="w-full border rounded-xl px-4 py-3.5 text-white transition-all">
+                    <select id="assetType" class="w-full border rounded-xl px-4 py-3 text-white transition-all">
                         <option value="">Select type...</option>
                         <option value="TRAILER">TRAILER</option>
                         <option value="POD">POD (Podcast)</option>
@@ -154,7 +154,7 @@
                 <!-- Platform -->
                 <div>
                     <label class="block text-xs font-bold text-purple-200 mb-2 uppercase tracking-wider">Platform</label>
-                    <select id="platform" class="w-full border rounded-xl px-4 py-3.5 text-white transition-all">
+                    <select id="platform" class="w-full border rounded-xl px-4 py-3 text-white transition-all">
                         <option value="">Select platform...</option>
                         <option value="YouTube">YouTube</option>
                         <option value="RSS">RSS</option>
@@ -167,7 +167,7 @@
                 <!-- Ratio -->
                 <div>
                     <label class="block text-xs font-bold text-purple-200 mb-2 uppercase tracking-wider">Ratio</label>
-                    <select id="ratio" class="w-full border rounded-xl px-4 py-3.5 text-white transition-all">
+                    <select id="ratio" class="w-full border rounded-xl px-4 py-3 text-white transition-all">
                         <option value="">Select ratio...</option>
                         <option value="16x9">16x9 (Landscape)</option>
                         <option value="9x16">9x16 (Vertical / Stories)</option>
@@ -179,13 +179,13 @@
                 <!-- Asset Title -->
                 <div class="md:col-span-2">
                     <label class="block text-xs font-bold text-purple-200 mb-2 uppercase tracking-wider">Asset Title (if applicable)</label>
-                    <input type="text" id="title" placeholder="Meet The Marketing Genius Behind..." class="w-full border rounded-xl px-4 py-3.5 text-white placeholder-purple-300/40 transition-all">
+                    <input type="text" id="title" placeholder="Meet The Marketing Genius Behind..." class="w-full border rounded-xl px-4 py-3 text-white placeholder-purple-300/40 transition-all">
                 </div>
 
                 <!-- Version -->
                 <div class="md:col-span-2">
                     <label class="block text-xs font-bold text-purple-200 mb-2 uppercase tracking-wider">Version</label>
-                    <select id="version" class="w-full border rounded-xl px-4 py-3.5 text-white transition-all font-mono">
+                    <select id="version" class="w-full border rounded-xl px-4 py-3 text-white transition-all font-mono">
                         <option value="v01">v01</option>
                         <option value="v02">v02</option>
                         <option value="v03">v03</option>
@@ -211,7 +211,7 @@
             </div>
 
             <!-- Warning -->
-            <div id="warning" class="mt-6 bg-purple-400/10 border border-purple-300/40 rounded-xl p-4 hidden">
+            <div id="warning" class="mt-5 bg-purple-400/10 border border-purple-300/40 rounded-xl p-4 hidden">
                 <div class="flex items-center gap-2 text-purple-200 text-sm">
                     <span class="text-xl">⚠️</span>
                     <span class="font-medium">Remove forbidden words: "final", "new", "fixed", "latest"</span>
@@ -219,19 +219,19 @@
             </div>
 
             <!-- Generated Filename -->
-            <div class="mt-6 md:mt-8 pt-6 md:pt-8 border-t border-purple-400/20">
+            <div class="mt-5 md:mt-6 pt-5 md:pt-6 border-t border-purple-400/20">
                 <label class="block text-xs font-bold text-purple-200 mb-3 uppercase tracking-wider">Generated Filename</label>
                 
                 <div id="filenameSection" class="space-y-4 hidden">
-                    <div class="filename-display border rounded-xl p-4 md:p-5 font-mono text-xs md:text-sm text-green-300 break-all" id="filenameDisplay"></div>
+                    <div class="filename-display border rounded-xl p-4 font-mono text-xs md:text-sm text-green-300 break-all" id="filenameDisplay"></div>
                     
-                    <button id="copyButton" class="copy-button w-full py-4 md:py-5 rounded-xl font-bold text-base md:text-lg text-white shadow-xl">
+                    <button id="copyButton" class="copy-button w-full py-4 rounded-xl font-bold text-base md:text-lg text-white shadow-xl">
                         COPY FILENAME
                     </button>
                 </div>
 
-                <div id="emptyState" class="filename-display border rounded-xl p-6 md:p-8 text-center text-purple-200/50">
-                    <span class="text-3xl md:text-4xl mb-2 block opacity-50">📁</span>
+                <div id="emptyState" class="filename-display border rounded-xl p-5 text-center text-purple-200/50">
+                    <span class="text-3xl mb-2 block opacity-50">📁</span>
                     <p class="text-sm font-medium">Fill in all fields to generate filename</p>
                     <p class="text-xs mt-2 text-purple-300/30" id="missingFields"></p>
                 </div>
@@ -239,7 +239,7 @@
         </div>
 
         <!-- Footer -->
-        <div class="mt-6 md:mt-8 text-center text-purple-300/30 text-xs">
+        <div class="mt-4 md:mt-5 text-center text-purple-300/30 text-xs">
             Auto-generates with today's date • Version defaults to v01 • Increments for revisions
         </div>
     </div>
