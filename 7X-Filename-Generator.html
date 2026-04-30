@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7X Filename Generator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background: linear-gradient(135deg, #0a0615 0%, #1f1544 50%, #3d2a9c 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+        select, input {
+            background: #1a0f3d;
+            border-color: rgba(168, 85, 247, 0.3);
+        }
+        select:focus, input:focus {
+            border-color: rgba(216, 180, 254, 0.5);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.2);
+        }
+        .card-bg {
+            background: rgba(88, 28, 135, 0.15);
+            border-color: rgba(168, 85, 247, 0.2);
+        }
+        .filename-display {
+            background: #1a0f3d;
+            border-color: rgba(168, 85, 247, 0.3);
+        }
+        .copy-button {
+            background: linear-gradient(90deg, #6b21a8 0%, #7c3aed 50%, #6b21a8 100%);
+            transition: transform 0.2s;
+        }
+        .copy-button:hover {
+            transform: scale(1.02);
+        }
+        .copy-button:active {
+            transform: scale(0.98);
+        }
+        .copy-button.copied {
+            background: #10b981;
+        }
+    </style>
+</head>
+<body class="text-white p-4 md:p-8">
+    <div class="max-w-5xl mx-auto">
+        
+        <!-- Header -->
+        <div class="mb-8 md:mb-12 text-center">
+            <div class="inline-block">
+                <div class="text-7xl md:text-8xl font-black tracking-tight text-white mb-3" style="filter: drop-shadow(0 10px 30px rgba(0,0,0,0.5))">
+                    7X
+                </div>
+                <div class="text-base md:text-lg font-bold tracking-widest text-purple-200 uppercase">Filename Generator</div>
+            </div>
+        </div>
+
+        <!-- Main Card -->
+        <div class="card-bg backdrop-blur-sm border rounded-2xl p-4 md:p-8 shadow-2xl">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                
+                <!-- Show -->
+                <div>
+                    <label class="block text-xs font-bold text-purple-200 mb-2 uppercase tracking-wider">Show</label>
+                    <select id="show" class="w-full border rounded-xl px-4 py-3.5 text-white transition-all">
+                        <option value="">Select show...</option>
+                        <option value="MA">MA - Man Alive</option>
+                        <option value="CP">CP - Creator Playbooks</option>
+                        <option value="MFC">MFC - Money For Couples</option>
+                        <option value="TW">TW - True Wealth</option>
+                        <option value="SDSB">SDSB - Socially Distant Sports Bar</option>
+                        <option value="TNBS">TNBS - The Nathan Barry Show</option>
+                        <option value="IIHIH">IIHIH - Is It Hot In Here</option>
+                        <option value="TWC">TWC - True Wealth Clips</option>
+                        <option value="MAC">MAC - Man Alive Clips</option>
+                    </select>
+                </div>
+
+                <!-- Episode -->
+                <div>
+                    <label class="block text-xs font-bold text-purple-200 mb-2 uppercase tracking-wider">Episode</label>
+                    <input type="text" id="episode" placeholder="E034" class="w-full border rounded-xl px-4 py-3.5 text-white placeholder-purple-300/40 transition-all font-mono">
+                </div>
+
+                <!-- Guest -->
+                <div>
+                    <label class="block text-xs font-bold text-purple-200 mb-2 uppercase tracking-wider">Guest / Topic</label>
+                    <input type="text" id="guest" placeholder="Callum McDonnell" class="w-full border rounded-xl px-4 py-3.5 text-white placeholder-purple-300/40 transition-all">
+                </div>
+
+                <!-- Asset Type -->
+                <div>
+                    <label class="block text-xs font-bold text-purple-200 mb-2 uppercase tracking-wider">Asset Type</label>
+                    <select id="assetType" class="w-full border rounded-xl px-4 py-3.5 text-white transition-all">
+                        <option value="">Select type...</option>
+                        <option value="TRAILER">TRAILER</option>
+                        <option value="POD">POD (Podcast)</option>
+                        <option value="CLIP">CLIP</option>
+                        <option value="SHORT">SHORT</option>
+                        <option value="THUMB">THUMB (Thumbnail)</option>
+                        <option value="IMAGE">IMAGE</option>
+                    </select>
+                </div>
+
+                <!-- Platform -->
+                <div>
+                    <label class="block text-xs font-bold text-purple-200 mb-2 uppercase tracking-wider">Platform</label>
+                    <select id="platform" class="w-full border rounded-xl px-4 py-3.5 text-white transition-all">
+                        <option value="">Select platform...</option>
+                        <option value="YouTube">YouTube</option>
+                        <option value="RSS">RSS</option>
+                        <option value="Instagram">Instagram</option>
+                        <option value="TikTok">TikTok (Shorts)</option>
+                        <option value="LinkedIn">LinkedIn</option>
+                    </select>
+                </div>
+
+                <!-- Ratio -->
+                <div>
+                    <label class="block text-xs font-bold text-purple-200 mb-2 uppercase tracking-wider">Ratio</label>
+                    <select id="ratio" class="w-full border rounded-xl px-4 py-3.5 text-white transition-all">
+                        <option value="">Select ratio...</option>
+                        <option value="16x9">16x9 (Landscape)</option>
+                        <option value="9x16">9x16 (Vertical / Stories)</option>
+                        <option value="1x1">1x1 (Square)</option>
+                        <option value="4x5">4x5 (Portrait)</option>
+                    </select>
+                </div>
+
+                <!-- Asset Title -->
+                <div class="md:col-span-2">
+                    <label class="block text-xs font-bold text-purple-200 mb-2 uppercase tracking-wider">Asset Title</label>
+                    <input type="text" id="title" placeholder="Meet The Marketing Genius Behind..." class="w-full border rounded-xl px-4 py-3.5 text-white placeholder-purple-300/40 transition-all">
+                </div>
+
+                <!-- Version -->
+                <div class="md:col-span-2">
+                    <label class="block text-xs font-bold text-purple-200 mb-2 uppercase tracking-wider">Version</label>
+                    <select id="version" class="w-full border rounded-xl px-4 py-3.5 text-white transition-all font-mono">
+                        <option value="v01">v01</option>
+                        <option value="v02">v02</option>
+                        <option value="v03">v03</option>
+                        <option value="v04">v04</option>
+                        <option value="v05">v05</option>
+                        <option value="v06">v06</option>
+                        <option value="v07">v07</option>
+                        <option value="v08">v08</option>
+                        <option value="v09">v09</option>
+                        <option value="v10">v10</option>
+                        <option value="v11">v11</option>
+                        <option value="v12">v12</option>
+                        <option value="v13">v13</option>
+                        <option value="v14">v14</option>
+                        <option value="v15">v15</option>
+                        <option value="v16">v16</option>
+                        <option value="v17">v17</option>
+                        <option value="v18">v18</option>
+                        <option value="v19">v19</option>
+                        <option value="v20">v20</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Warning -->
+            <div id="warning" class="mt-6 bg-purple-400/10 border border-purple-300/40 rounded-xl p-4 hidden">
+                <div class="flex items-center gap-2 text-purple-200 text-sm">
+                    <span class="text-xl">⚠️</span>
+                    <span class="font-medium">Remove forbidden words: "final", "new", "fixed", "latest"</span>
+                </div>
+            </div>
+
+            <!-- Generated Filename -->
+            <div class="mt-6 md:mt-8 pt-6 md:pt-8 border-t border-purple-400/20">
+                <label class="block text-xs font-bold text-purple-200 mb-3 uppercase tracking-wider">Generated Filename</label>
+                
+                <div id="filenameSection" class="space-y-4 hidden">
+                    <div class="filename-display border rounded-xl p-4 md:p-5 font-mono text-xs md:text-sm text-green-300 break-all" id="filenameDisplay"></div>
+                    
+                    <button id="copyButton" class="copy-button w-full py-4 md:py-5 rounded-xl font-bold text-base md:text-lg text-white shadow-xl">
+                        COPY FILENAME
+                    </button>
+                </div>
+
+                <div id="emptyState" class="filename-display border rounded-xl p-6 md:p-8 text-center text-purple-200/50">
+                    <span class="text-3xl md:text-4xl mb-2 block opacity-50">📁</span>
+                    <p class="text-sm font-medium">Fill in all fields to generate filename</p>
+                    <p class="text-xs mt-2 text-purple-300/30" id="missingFields"></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="mt-6 md:mt-8 text-center text-purple-300/30 text-xs">
+            Auto-generates with today's date • Version defaults to v01 • Increments for revisions
+        </div>
+    </div>
+
+    <script>
+        const show = document.getElementById('show');
+        const episode = document.getElementById('episode');
+        const guest = document.getElementById('guest');
+        const assetType = document.getElementById('assetType');
+        const platform = document.getElementById('platform');
+        const ratio = document.getElementById('ratio');
+        const title = document.getElementById('title');
+        const version = document.getElementById('version');
+        const filenameDisplay = document.getElementById('filenameDisplay');
+        const filenameSection = document.getElementById('filenameSection');
+        const emptyState = document.getElementById('emptyState');
+        const copyButton = document.getElementById('copyButton');
+        const warning = document.getElementById('warning');
+        const missingFields = document.getElementById('missingFields');
+
+        function cleanText(text) {
+            return text.replace(/[^a-zA-Z0-9]/g, '');
+        }
+
+        function getToday() {
+            const today = new Date();
+            return today.toISOString().split('T')[0];
+        }
+
+        function hasForbiddenWords() {
+            const forbidden = ['final', 'new', 'fixed', 'latest'];
+            const checkText = `${title.value} ${guest.value}`.toLowerCase();
+            return forbidden.some(word => checkText.includes(word));
+        }
+
+        function generateFilename() {
+            const showVal = show.value;
+            const episodeVal = episode.value;
+            const guestVal = guest.value;
+            const assetTypeVal = assetType.value;
+            const platformVal = platform.value;
+            const ratioVal = ratio.value;
+            const titleVal = title.value;
+            const versionVal = version.value;
+
+            if (!showVal || !episodeVal || !guestVal || !assetTypeVal || !platformVal || !ratioVal || !titleVal) {
+                filenameSection.classList.add('hidden');
+                emptyState.classList.remove('hidden');
+                
+                const missing = [];
+                if (!showVal) missing.push('Show');
+                if (!episodeVal) missing.push('Episode');
+                if (!guestVal) missing.push('Guest');
+                if (!assetTypeVal) missing.push('Asset Type');
+                if (!platformVal) missing.push('Platform');
+                if (!ratioVal) missing.push('Ratio');
+                if (!titleVal) missing.push('Title');
+                
+                missingFields.textContent = `Missing: ${missing.join(', ')}`;
+                return;
+            }
+
+            const cleanGuest = cleanText(guestVal);
+            const cleanTitle = cleanText(titleVal);
+            const cleanAssetType = assetTypeVal.replace(/\s+/g, '');
+            const cleanPlatform = platformVal.replace(/\s+/g, '');
+            const date = getToday();
+
+            const filename = `${showVal}_${episodeVal}_${cleanGuest}_${cleanAssetType}_${cleanPlatform}_${ratioVal}_${cleanTitle}_${versionVal}_${date}`;
+
+            filenameDisplay.textContent = filename;
+            filenameSection.classList.remove('hidden');
+            emptyState.classList.add('hidden');
+
+            if (hasForbiddenWords()) {
+                warning.classList.remove('hidden');
+            } else {
+                warning.classList.add('hidden');
+            }
+        }
+
+        copyButton.addEventListener('click', function() {
+            const filename = filenameDisplay.textContent;
+            navigator.clipboard.writeText(filename).then(function() {
+                copyButton.textContent = '✓ COPIED!';
+                copyButton.classList.add('copied');
+                
+                setTimeout(function() {
+                    copyButton.textContent = 'COPY FILENAME';
+                    copyButton.classList.remove('copied');
+                }, 2000);
+            });
+        });
+
+        [show, episode, guest, assetType, platform, ratio, title, version].forEach(function(element) {
+            element.addEventListener('input', generateFilename);
+            element.addEventListener('change', generateFilename);
+        });
+
+        generateFilename();
+    </script>
+</body>
+</html>
