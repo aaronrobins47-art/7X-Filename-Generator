@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>7X Filename Generator</title>
     <script src="https://cdn.tailwindcss.com"></script>
+
     <style>
         body {
             background:
@@ -26,12 +27,14 @@
             padding: 0;
         }
 
-        select, input {
+        select,
+        input {
             background: rgba(26, 15, 61, 0.92);
             border-color: rgba(168, 85, 247, 0.3);
         }
 
-        select:focus, input:focus {
+        select:focus,
+        input:focus {
             border-color: rgba(216, 180, 254, 0.5);
             outline: none;
             box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.2);
@@ -73,14 +76,22 @@
             width: 120px;
             max-width: 50vw;
             height: auto;
-            margin: 0 auto 0.35rem auto;
+            margin: 0 auto 0 auto;
             display: block;
             filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.5));
+        }
+
+        .filename-title {
+            margin-top: -55px;
         }
 
         @media (min-width: 768px) {
             .brand-logo {
                 width: 140px;
+            }
+
+            .filename-title {
+                margin-top: -65px;
             }
         }
     </style>
@@ -98,7 +109,7 @@
                     class="brand-logo"
                 >
 
-                <div class="text-sm md:text-base font-bold tracking-widest text-purple-200 uppercase leading-none">
+                <div class="filename-title text-sm md:text-base font-bold tracking-widest text-purple-200 uppercase leading-none">
                     Filename Generator
                 </div>
             </div>
@@ -110,7 +121,10 @@
                 
                 <!-- Show -->
                 <div>
-                    <label class="block text-xs font-bold text-purple-200 mb-2 uppercase tracking-wider">Show</label>
+                    <label class="block text-xs font-bold text-purple-200 mb-2 uppercase tracking-wider">
+                        Show
+                    </label>
+
                     <select id="show" class="w-full border rounded-xl px-4 py-3 text-white transition-all">
                         <option value="">Select show...</option>
                         <option value="MA">MA - Man Alive</option>
@@ -127,19 +141,38 @@
 
                 <!-- Episode -->
                 <div>
-                    <label class="block text-xs font-bold text-purple-200 mb-2 uppercase tracking-wider">Episode</label>
-                    <input type="text" id="episode" placeholder="E034" class="w-full border rounded-xl px-4 py-3 text-white placeholder-purple-300/40 transition-all font-mono">
+                    <label class="block text-xs font-bold text-purple-200 mb-2 uppercase tracking-wider">
+                        Episode
+                    </label>
+
+                    <input 
+                        type="text" 
+                        id="episode" 
+                        placeholder="E034" 
+                        class="w-full border rounded-xl px-4 py-3 text-white placeholder-purple-300/40 transition-all font-mono"
+                    >
                 </div>
 
                 <!-- Guest -->
                 <div>
-                    <label class="block text-xs font-bold text-purple-200 mb-2 uppercase tracking-wider">Guest / Topic</label>
-                    <input type="text" id="guest" placeholder="Callum McDonnell" class="w-full border rounded-xl px-4 py-3 text-white placeholder-purple-300/40 transition-all">
+                    <label class="block text-xs font-bold text-purple-200 mb-2 uppercase tracking-wider">
+                        Guest / Topic
+                    </label>
+
+                    <input 
+                        type="text" 
+                        id="guest" 
+                        placeholder="Callum McDonnell" 
+                        class="w-full border rounded-xl px-4 py-3 text-white placeholder-purple-300/40 transition-all"
+                    >
                 </div>
 
                 <!-- Asset Type -->
                 <div>
-                    <label class="block text-xs font-bold text-purple-200 mb-2 uppercase tracking-wider">Asset Type</label>
+                    <label class="block text-xs font-bold text-purple-200 mb-2 uppercase tracking-wider">
+                        Asset Type
+                    </label>
+
                     <select id="assetType" class="w-full border rounded-xl px-4 py-3 text-white transition-all">
                         <option value="">Select type...</option>
                         <option value="TRAILER">TRAILER</option>
@@ -153,7 +186,10 @@
 
                 <!-- Platform -->
                 <div>
-                    <label class="block text-xs font-bold text-purple-200 mb-2 uppercase tracking-wider">Platform</label>
+                    <label class="block text-xs font-bold text-purple-200 mb-2 uppercase tracking-wider">
+                        Platform
+                    </label>
+
                     <select id="platform" class="w-full border rounded-xl px-4 py-3 text-white transition-all">
                         <option value="">Select platform...</option>
                         <option value="YouTube">YouTube</option>
@@ -166,7 +202,10 @@
 
                 <!-- Ratio -->
                 <div>
-                    <label class="block text-xs font-bold text-purple-200 mb-2 uppercase tracking-wider">Ratio</label>
+                    <label class="block text-xs font-bold text-purple-200 mb-2 uppercase tracking-wider">
+                        Ratio
+                    </label>
+
                     <select id="ratio" class="w-full border rounded-xl px-4 py-3 text-white transition-all">
                         <option value="">Select ratio...</option>
                         <option value="16x9">16x9 (Landscape)</option>
@@ -178,13 +217,24 @@
 
                 <!-- Asset Title -->
                 <div class="md:col-span-2">
-                    <label class="block text-xs font-bold text-purple-200 mb-2 uppercase tracking-wider">Asset Title (if applicable)</label>
-                    <input type="text" id="title" placeholder="Meet The Marketing Genius Behind..." class="w-full border rounded-xl px-4 py-3 text-white placeholder-purple-300/40 transition-all">
+                    <label class="block text-xs font-bold text-purple-200 mb-2 uppercase tracking-wider">
+                        Asset Title (if applicable)
+                    </label>
+
+                    <input 
+                        type="text" 
+                        id="title" 
+                        placeholder="Meet The Marketing Genius Behind..." 
+                        class="w-full border rounded-xl px-4 py-3 text-white placeholder-purple-300/40 transition-all"
+                    >
                 </div>
 
                 <!-- Version -->
                 <div class="md:col-span-2">
-                    <label class="block text-xs font-bold text-purple-200 mb-2 uppercase tracking-wider">Version</label>
+                    <label class="block text-xs font-bold text-purple-200 mb-2 uppercase tracking-wider">
+                        Version
+                    </label>
+
                     <select id="version" class="w-full border rounded-xl px-4 py-3 text-white transition-all font-mono">
                         <option value="v01">v01</option>
                         <option value="v02">v02</option>
@@ -214,25 +264,36 @@
             <div id="warning" class="mt-5 bg-purple-400/10 border border-purple-300/40 rounded-xl p-4 hidden">
                 <div class="flex items-center gap-2 text-purple-200 text-sm">
                     <span class="text-xl">⚠️</span>
-                    <span class="font-medium">Remove forbidden words: "final", "new", "fixed", "latest"</span>
+                    <span class="font-medium">
+                        Remove forbidden words: "final", "new", "fixed", "latest"
+                    </span>
                 </div>
             </div>
 
             <!-- Generated Filename -->
             <div class="mt-5 md:mt-6 pt-5 md:pt-6 border-t border-purple-400/20">
-                <label class="block text-xs font-bold text-purple-200 mb-3 uppercase tracking-wider">Generated Filename</label>
+                <label class="block text-xs font-bold text-purple-200 mb-3 uppercase tracking-wider">
+                    Generated Filename
+                </label>
                 
                 <div id="filenameSection" class="space-y-4 hidden">
-                    <div class="filename-display border rounded-xl p-4 font-mono text-xs md:text-sm text-green-300 break-all" id="filenameDisplay"></div>
+                    <div 
+                        class="filename-display border rounded-xl p-4 font-mono text-xs md:text-sm text-green-300 break-all" 
+                        id="filenameDisplay">
+                    </div>
                     
-                    <button id="copyButton" class="copy-button w-full py-4 rounded-xl font-bold text-base md:text-lg text-white shadow-xl">
+                    <button 
+                        id="copyButton" 
+                        class="copy-button w-full py-4 rounded-xl font-bold text-base md:text-lg text-white shadow-xl">
                         COPY FILENAME
                     </button>
                 </div>
 
                 <div id="emptyState" class="filename-display border rounded-xl p-5 text-center text-purple-200/50">
                     <span class="text-3xl mb-2 block opacity-50">📁</span>
-                    <p class="text-sm font-medium">Fill in all fields to generate filename</p>
+                    <p class="text-sm font-medium">
+                        Fill in all fields to generate filename
+                    </p>
                     <p class="text-xs mt-2 text-purple-300/30" id="missingFields"></p>
                 </div>
             </div>
@@ -253,6 +314,7 @@
         const ratio = document.getElementById('ratio');
         const title = document.getElementById('title');
         const version = document.getElementById('version');
+
         const filenameDisplay = document.getElementById('filenameDisplay');
         const filenameSection = document.getElementById('filenameSection');
         const emptyState = document.getElementById('emptyState');
@@ -272,7 +334,10 @@
         function hasForbiddenWords() {
             const forbidden = ['final', 'new', 'fixed', 'latest'];
             const checkText = `${title.value} ${guest.value}`.toLowerCase();
-            return forbidden.some(word => checkText.includes(word));
+
+            return forbidden.some(function(word) {
+                return checkText.includes(word);
+            });
         }
 
         function generateFilename() {
@@ -290,6 +355,7 @@
                 emptyState.classList.remove('hidden');
                 
                 const missing = [];
+
                 if (!showVal) missing.push('Show');
                 if (!episodeVal) missing.push('Episode');
                 if (!guestVal) missing.push('Guest');
@@ -349,7 +415,16 @@
             });
         });
 
-        [show, episode, guest, assetType, platform, ratio, title, version].forEach(function(element) {
+        [
+            show,
+            episode,
+            guest,
+            assetType,
+            platform,
+            ratio,
+            title,
+            version
+        ].forEach(function(element) {
             element.addEventListener('input', generateFilename);
             element.addEventListener('change', generateFilename);
         });
